@@ -1,0 +1,29 @@
+<div class="container">
+
+</div>
+
+  <% if @current_user && @current_user.access_token? %>
+    <div id="tweet_post">
+      <form id="tweet_post_form" action="/new" method="post">
+        <label for="tweet_textarea">feels like tweeting...?</label>
+        <textarea class="input-field" rows="4" cols="30" id="tweet_textarea" name="tweet_textarea" ></textarea>
+        <input class="button-field" type="submit" name="submit_tweet" value="Tweet!!">
+        <input type="checkbox" name="option" value="delay5minute">Tweet 5 minute later!!!<br>
+      </form>
+    </div>
+  <% end %>
+
+  <div id="queue_tweets">
+
+  </div>
+
+  <div id="loader">
+    <img src="/images/ajax-loader.gif">posting...</img>
+  </div>
+
+  <div id="success">
+    <b> Post successfully </b>
+  </div>
+
+
+

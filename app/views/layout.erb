@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    normalize.css removes cross-browser differences in defaults, e.g.,
+    differences in how form elements appear between Firefox and IE
+    See: http://necolas.github.com/normalize.css/
+  -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <!--
+    application.css is where you put your styles
+  -->
+  <link rel="stylesheet" href="/css/application.css">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/js/application.js"></script>
+
+  <title></title>
+</head>
+<body>
+
+  <% if logged_in? %>
+    <div id="login_user">
+        <b>Welcome to Tweet Now!!!</b>
+        <b> You logged in as: <%= @current_user.username %> </b>
+        <a href="/logout">Logout</a>
+        <% unless @current_user.access_token? %>
+          <a href="/auth/twitter">Link your account to Twitter</a>
+        <% end %>
+    </div>
+
+    <% else %>
+    <div id="signin_create">
+        <a href="/create">Create User</a>
+        <a href="/login">Login</a>
+    </div>
+  <% end %>
+
+
+
+  <%= yield %>
+</body>
+</html>
